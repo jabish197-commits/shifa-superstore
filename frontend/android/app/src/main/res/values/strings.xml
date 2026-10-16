@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Shifa Superstore</string>
+    <string name="title_activity_main">Shifa Superstore</string>
+    <string name="package_name">com.shifasuperstore.app</string>
+    <string name="custom_url_scheme">com.shifasuperstore.app</string>
+</resources>

@@ -1,0 +1,74 @@
+{
+  "aashirvaad": {
+    "src": "/brands/aashirvaad.svg",
+    "source": "https://s7ap1.scene7.com/is/content/itcportalprod/Logo"
+  },
+  "amul": {
+    "src": "/brands/amul.svg",
+    "source": "https://amul.com/header/logo.svg"
+  },
+  "bnatural": {
+    "src": "/brands/bnatural.webp",
+    "source": "https://s7ap1.scene7.com/is/image/itcportalprod/BNatural_Logo_Header-(1)-0102?fmt=webp-alpha"
+  },
+  "bingo": {
+    "src": "/brands/bingo.webp",
+    "source": "https://s7ap1.scene7.com/is/image/itcportalprod/BingoLogo_Header_128x80_1x%20(1)?fmt=webp-alpha"
+  },
+  "britannia": {
+    "src": "/brands/britannia.png",
+    "source": "https://media.britannia.co.in/Britannia_Logo_fcce3225c0.png"
+  },
+  "cadbury": {
+    "src": "/brands/cadbury.svg",
+    "source": "https://images.ctfassets.net/pmzhtobns06n/2lwDnQV5TUAx15z7Z2FYWw/63e169e6c0155db88194f2a506b260e8/Cadbury_GlobalNavigation_BrandLogo_Desktop.svg?q=80"
+  },
+  "classmate": {
+    "src": "/brands/classmate.webp",
+    "source": "https://s7ap1.scene7.com/is/image/itcportalprod/classmate-by-itc?fmt=webp-alpha"
+  },
+  "maggi": {
+    "src": "/brands/maggi.png",
+    "source": "https://www.maggi.in/sites/default/files/maggi_logo_png_0.png"
+  },
+  "nescafe": {
+    "src": "/brands/nescafe.png",
+    "source": "https://www.nescafe.com/in/sites/default/files/latest_logo_white.png"
+  },
+  "nestle": {
+    "src": "/brands/nestle.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Nestl%C3%A9_textlogo.svg"
+  },
+  "sunfeast": {
+    "src": "/brands/sunfeast.svg",
+    "source": "https://sunfeastworld.com/content/dam/sunfeast-world/SF-Logo-New.svg"
+  },
+  "yippee": {
+    "src": "/brands/yippee.webp",
+    "source": "https://s7ap1.scene7.com/is/image/itcportalprod/Logo_2x?fmt=webp-alpha"
+  },
+  "comfort": {
+    "src": "/brands/comfort.jpg",
+    "source": "https://www.hul.co.in/content-images/92ui5egz/production/0023f51bc3bb5c4ac1c7821bf86af96b25751e11-1080x1080.jpg?w=400&h=400&fit=crop&auto=format"
+  },
+  "domex": {
+    "src": "/brands/domex.jpg",
+    "source": "https://www.hul.co.in/content-images/92ui5egz/production/4d88cdab07a183be59c86d2cdc1b06aa379f7af3-1080x1080.jpg?w=400&h=400&fit=crop&auto=format"
+  },
+  "rin": {
+    "src": "/brands/rin.png",
+    "source": "https://www.hul.co.in/content-images/92ui5egz/production/a9d0dcb5eb4bd5fbc006709aa43c3d00d07f0d7a-1080x1080.png?w=400&h=400&fit=crop&auto=format"
+  },
+  "surf": {
+    "src": "/brands/surf.png",
+    "source": "https://www.hul.co.in/content-images/92ui5egz/production/9afcf63222a4535edbef5d0604c06a680244ae6a-1080x1080.png?w=400&h=400&fit=crop&auto=format"
+  },
+  "vim": {
+    "src": "/brands/vim.jpg",
+    "source": "https://www.hul.co.in/content-images/92ui5egz/production/ac763c0e47482298614736233fde33b62e2bfaa0-1080x1080.jpg?w=400&h=400&fit=crop&auto=format"
+  },
+  "wheel": {
+    "src": "/brands/wheel.jpg",
+    "source": "https://www.hul.co.in/content-images/92ui5egz/production/d52b011b990ab59e621515473df7ce446563d40d-1080x1080.jpg?w=400&h=400&fit=crop&auto=format"
+  }
+}

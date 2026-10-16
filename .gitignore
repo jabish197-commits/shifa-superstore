@@ -1,0 +1,27 @@
+**/__pycache__/
+**/*.py[cod]
+**/venv/
+**/node_modules/
+**/.env
+**/.env.*
+!**/.env.example
+**/*.sqlite3
+**/*.sqlite3-*
+**/media/
+**/staticfiles/
+**/dist/
+**/.backups/
+**/test-results/
+**/playwright-report/
+
+# Recordings, native builds and signing credentials
+*.mp4
+**/.gradle/
+**/build/
+**/local.properties
+**/*.jks
+**/*.keystore
+**/*.p12
+**/*.mobileprovision
+**/.DS_Store
+!**/.env.mobile.example

@@ -1,0 +1,448 @@
+.promo-carousel {
+  position: relative;
+  margin-top: 38px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px #243e3010;
+  background: #fff5e7;
+  overflow: hidden;
+}
+.promo-viewport {
+  overflow: hidden;
+  touch-action: pan-y;
+}
+.promo-track {
+  display: flex;
+  transition: transform 0.65s cubic-bezier(0.22, 0.68, 0.25, 1);
+  will-change: transform;
+}
+.promo-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  min-height: 345px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 24px;
+  padding: 35px 70px 56px;
+  position: relative;
+  overflow: hidden;
+}
+.promo-peach {
+  background: linear-gradient(115deg, #fff2df, #f7e1ca);
+}
+.promo-mint {
+  background: linear-gradient(115deg, #e5f7ee, #caeae3);
+}
+.promo-lilac {
+  background: linear-gradient(115deg, #f3ecfa, #dddff6);
+}
+.promo-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 470px;
+}
+.promo-kicker {
+  font-size: 9px;
+  letter-spacing: 2px;
+  font-weight: 800;
+  color: #497253;
+}
+.promo-copy h2 {
+  font-size: 38px;
+  line-height: 1.07;
+  margin: 13px 0 15px;
+  letter-spacing: -1.4px;
+}
+.promo-copy p {
+  font-size: 13px;
+  color: #5e725e;
+  max-width: 350px;
+  margin-bottom: 20px;
+}
+.promo-cta {
+  background: #ea7137;
+  color: white;
+  border-radius: 30px;
+  padding: 11px 22px;
+}
+.promo-illustration {
+  height: 250px;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+.promo-orbit {
+  position: absolute;
+  width: 235px;
+  height: 235px;
+  border-radius: 50%;
+  border: 25px solid #ffffff55;
+  background: #ffffff20;
+  right: 10%;
+  top: 7px;
+}
+.promo-icon-card {
+  transform: rotate(-7deg);
+  width: 195px;
+  height: 223px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff9;
+  border-radius: 26px;
+  background: linear-gradient(145deg, #ffffffeb, #ffffff70);
+  color: #307658;
+  box-shadow: 12px 17px 0 #54856512;
+  position: relative;
+}
+.promo-icon-card strong {
+  font-size: 23px;
+  letter-spacing: 3px;
+  margin-top: 12px;
+}
+.promo-icon-card small {
+  font-size: 8px;
+  margin-top: 6px;
+}
+.promo-spark {
+  position: absolute;
+  font-size: 33px;
+  color: #dc9541;
+}
+.spark-one {
+  top: 7px;
+  left: 14%;
+}
+.spark-two {
+  bottom: 16px;
+  right: 8%;
+  font-size: 22px;
+}
+.promo-seal {
+  position: absolute;
+  right: 0;
+  top: 27px;
+  background: #fff7d6;
+  color: #5e6a37;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  transform: rotate(12deg);
+  border: 1px dashed #c2bd89;
+}
+.promo-image {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.promo-image img {
+  width: 100%;
+  height: 240px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+.promo-arrow {
+  position: absolute;
+  top: calc(50% - 22px);
+  width: 36px;
+  height: 44px;
+  border: 1px solid #fff9;
+  border-radius: 30px;
+  background: #fff9;
+  color: #265c3e;
+  font-size: 28px;
+  line-height: 1;
+  z-index: 2;
+}
+.promo-arrow:hover {
+  background: #fff;
+}
+.promo-prev {
+  left: 13px;
+}
+.promo-next {
+  right: 13px;
+}
+.promo-controls {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.promo-dots {
+  display: flex;
+  background: #fff9;
+  border-radius: 24px;
+  padding: 0 7px;
+}
+.promo-dots button {
+  width: 28px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  padding: 0;
+}
+.promo-dots span {
+  display: block;
+  width: 6px;
+  height: 6px;
+  background: #8f9e84;
+  border-radius: 50%;
+  transition:
+    width 0.3s,
+    background 0.3s;
+}
+.promo-dots [aria-current='true'] span {
+  width: 18px;
+  border-radius: 5px;
+  background: #246744;
+}
+.promo-pause {
+  font-size: 9px;
+  background: transparent;
+  border: 0;
+  color: #486849;
+  padding: 8px;
+}
+.promo-slide[aria-hidden='false'] .promo-icon-card {
+  animation: promo-card-enter 0.8s ease both;
+}
+@keyframes promo-card-enter {
+  from {
+    opacity: 0.3;
+    translate: 25px 10px;
+    rotate: 6deg;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    rotate: 0deg;
+  }
+}
+@media (max-width: 760px) {
+  .promo-carousel {
+    border-radius: 16px;
+    margin-top: 25px;
+  }
+  .promo-slide {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    min-height: 520px;
+    padding: 26px 32px 53px;
+    align-content: start;
+  }
+  .promo-copy h2 {
+    font-size: 30px;
+    letter-spacing: -0.9px;
+    max-width: 320px;
+  }
+  .promo-copy p {
+    font-size: 12px;
+    max-width: 300px;
+  }
+  .promo-kicker {
+    font-size: 8px;
+    letter-spacing: 1.4px;
+  }
+  .promo-cta {
+    font-size: 12px;
+    padding: 10px 18px;
+  }
+  .promo-illustration {
+    height: 210px;
+  }
+  .promo-icon-card {
+    width: 155px;
+    height: 180px;
+  }
+  .promo-icon-card > svg {
+    height: 83px;
+    width: 83px;
+  }
+  .promo-icon-card strong {
+    font-size: 18px;
+  }
+  .promo-icon-card small {
+    font-size: 7px;
+  }
+  .promo-orbit {
+    width: 190px;
+    height: 190px;
+  }
+  .promo-seal {
+    width: 63px;
+    height: 63px;
+    font-size: 9px;
+    right: 1px;
+  }
+  .promo-arrow {
+    width: 27px;
+    height: 38px;
+    font-size: 22px;
+    top: 64%;
+  }
+  .promo-prev {
+    left: 4px;
+  }
+  .promo-next {
+    right: 4px;
+  }
+  .promo-image img {
+    height: 200px;
+  }
+  .promo-spark {
+    font-size: 25px;
+  }
+  .spark-one {
+    left: 3%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .promo-track,
+  .promo-dots span {
+    transition: none !important;
+  }
+  .promo-icon-card {
+    animation: none !important;
+  }
+}
+/* Photographic default slides; uploaded admin artwork keeps its full-image layout. */
+.promo-slide.promo-photo {
+  background: #103a27;
+  min-height: 385px;
+  isolation: isolate;
+  grid-template-columns: 1fr;
+  padding-top: 44px;
+  padding-bottom: 64px;
+}
+.promo-photo .promo-image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+.promo-photo .promo-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% center;
+  border-radius: 0;
+}
+.promo-photo:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, #082f22f0 0%, #0b3429cf 33%, #10382544 65%, transparent);
+}
+.promo-photo .promo-copy {
+  max-width: 460px;
+}
+.promo-photo .promo-kicker {
+  color: #d0e4ab;
+}
+.promo-photo .promo-copy h2 {
+  color: #fff9e7;
+  font-size: 41px;
+  line-height: 1.12;
+}
+.promo-photo .promo-copy p {
+  color: #e0e9d8;
+}
+.promo-photo .promo-cta {
+  background: #ff984b;
+  color: #143a25;
+  border-radius: 28px;
+}
+.promo-photo[aria-hidden='false'] .promo-image img {
+  animation: carousel-photo-zoom 12s ease-in-out both;
+}
+.promo-photo[aria-hidden='true'] .promo-image img {
+  animation: none;
+}
+.promo-controls {
+  border-radius: 30px;
+  background: #faffefdf;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  padding: 1px 11px;
+  white-space: nowrap;
+}
+.promo-dots {
+  background: transparent;
+}
+@keyframes carousel-photo-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.045);
+  }
+}
+@media (max-width: 760px) {
+  .promo-slide.promo-photo {
+    padding: 0 0 56px;
+    min-height: 570px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: #103a27;
+  }
+  .promo-photo .promo-image {
+    position: relative;
+    inset: auto;
+    order: -1;
+    height: 230px;
+    flex-shrink: 0;
+    width: 100%;
+    z-index: 0;
+  }
+  .promo-photo .promo-image img {
+    height: 230px;
+    object-position: 75% center;
+  }
+  .promo-photo:after {
+    display: none;
+  }
+  .promo-photo .promo-copy {
+    padding: 25px 32px 10px;
+    max-width: none;
+  }
+  .promo-photo .promo-copy h2 {
+    font-size: 29px;
+    line-height: 1.14;
+  }
+  .promo-photo .promo-copy p {
+    font-size: 12px;
+  }
+  .promo-photo .promo-cta {
+    min-height: 44px;
+  }
+  .promo-arrow {
+    top: 95px;
+  }
+  .promo-controls {
+    gap: 8px;
+    padding: 0 7px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .promo-photo .promo-image img {
+    animation: none !important;
+  }
+}
+.promo-motion-paused .promo-image img{animation-play-state:paused!important}

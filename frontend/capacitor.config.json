@@ -1,0 +1,9 @@
+{
+  "appId": "com.shifasuperstore.app",
+  "appName": "Shifa Superstore",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "backgroundColor": "#fafbf6"
+}
