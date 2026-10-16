@@ -25,3 +25,5 @@
 **/*.mobileprovision
 **/.DS_Store
 !**/.env.mobile.example
+
+!frontend/.env.mobile.example
