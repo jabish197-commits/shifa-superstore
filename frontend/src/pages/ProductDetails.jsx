@@ -1,3 +1,4 @@
+import SimilarProducts from '../components/products/SimilarProducts';
 import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import useLoad from '../hooks/useLoad';
@@ -109,6 +110,7 @@ export default function ProductDetails() {
           </div>
         </div>
       </div>
+      <SimilarProducts key={p.id} product={p} />
     </main>
   );
 }

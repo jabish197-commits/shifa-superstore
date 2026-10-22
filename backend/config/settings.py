@@ -126,6 +126,7 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_URL = "/media/"
+CATALOGUE_MEDIA_URL = os.environ.get("DJANGO_CATALOGUE_MEDIA_URL", "")
 MEDIA_ROOT = Path(os.environ.get("DJANGO_MEDIA_ROOT", BASE_DIR / "media"))
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
@@ -136,7 +137,7 @@ REST_FRAMEWORK["EXCEPTION_HANDLER"] = "config.exceptions.api_exception_handler"
 REST_FRAMEWORK["DEFAULT_THROTTLE_RATES"] = {"auth": "20/min", "refresh": "60/min"}
 DATA_UPLOAD_MAX_MEMORY_SIZE = 12 * 1024 * 1024
 STORAGES = {
-    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+    "default": {"BACKEND": "config.storage.CatalogueSnapshotStorage"},
     "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage" if not DEBUG else "django.contrib.staticfiles.storage.StaticFilesStorage"},
 }
 if os.environ.get("DB_HOST"):

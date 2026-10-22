@@ -11,6 +11,7 @@
 **/staticfiles/
 **/dist/
 **/.backups/
+**/backups/
 **/test-results/
 **/playwright-report/
 
@@ -25,5 +26,3 @@
 **/*.mobileprovision
 **/.DS_Store
 !**/.env.mobile.example
-
-!frontend/.env.mobile.example

@@ -46,3 +46,5 @@ Product query parameters: search, category, brand, offer, min_price, max_price, 
 The cart supplies products and quantities. The server recalculates all prices/discounts and validates delivery and stock transactionally. `expected_total` must equal the fresh server total; it never controls the charged amount. Generate one UUID per checkout attempt and reuse it on retries. A repeated successful key returns the existing order with HTTP 200; a new order returns 201.
 
 Errors: 400 validation, 401 unauthenticated/expired token, 403 role denied, 404 unavailable/not owned, 409 conflicting/dependent record, 429 authentication throttle, 503 temporary database contention. Field errors are JSON objects of messages; general errors use `detail`. Retry a 503 with the same checkout UUID. Never retry a checkout with a new UUID just because its response was lost.
+
+Product bulk import/export (admin only): GET products/export-csv/ (template=true for headers only); POST products/import-csv/ with multipart csv_file and optional images ZIP. Preview returns row errors or preview_token; confirm with the same files, confirm=true and preview_token. See PRODUCT-IMPORT.md.

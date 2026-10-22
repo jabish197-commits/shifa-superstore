@@ -172,3 +172,26 @@ class ProductTests(APITestCase):
     def test_django_admin_product_form_is_available(self):
         self.client.force_login(self.admin)
         self.assertEqual(self.client.get(reverse("admin:products_product_add")).status_code, 200)
+
+
+class SimilarProductTests(APITestCase):
+    def test_similar_products_match_type_and_hide_unavailable_catalog_entries(self):
+        from categories.models import Category
+        category = Category.objects.create(name="Kitchen")
+        source = Product.objects.create(name="Steel Scrubber - Pack of 3", category=category, price=40, stock=50)
+        match = Product.objects.create(name="Scrub Pads - Pack of 3", category=category, price=45, stock=5)
+        Product.objects.create(name="Kitchen Towels", category=category, price=30, stock=5)
+        Product.objects.create(name="Steel Scrubber hidden", category=category, price=30, is_active=False)
+        other = Category.objects.create(name="Other")
+        Product.objects.create(name="Steel Scrubber", category=other, price=30)
+        response = self.client.get(reverse("product-similar", args=[source.pk]))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual([item["id"] for item in response.data], [match.pk])
+        self.assertIn("image", response.data[0])
+        self.assertIn("pricing", response.data[0])
+
+    def test_no_matches_returns_empty_list(self):
+        source = Product.objects.create(name="Scrubber", price=40)
+        Product.objects.create(name="Rice", price=50)
+        response = self.client.get(reverse("product-similar", args=[source.pk]))
+        self.assertEqual(response.data, [])

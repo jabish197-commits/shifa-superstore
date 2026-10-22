@@ -1,3 +1,4 @@
+import ProductImport from './ProductImport';
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import useLoad from '../hooks/useLoad';
@@ -50,6 +51,7 @@ export default function ResourceList() {
           </Link>
         }
       />
+      {resource === 'products' && <ProductImport onImported={reload} />}
       <label className="admin-search">
         Search {config.title.toLowerCase()}
         <input
