@@ -8,30 +8,18 @@ export default function ShoppingAnimation() {
   return (
     <section
       className={`shopping-motion container ${paused ? 'shopping-motion-paused' : ''}`}
-      aria-labelledby="shopping-motion-title"
+      aria-label="Fill your basket with everyday essentials"
     >
-      <div className="shopping-motion-copy">
-        <p className="eyebrow">A BASKET FULL OF GOOD THINGS</p>
-        <h2 id="shopping-motion-title">
-          Your everyday.
-          <br />
-          <em>On its way.</em>
-        </h2>
-        <p>
-          Fill your basket with favourites.
-          <br />
-          We’ll take care of the everyday essentials.
-        </p>
-        <Link to="/products" className="button">
-          Fill your basket <Icon name="arrow" />
-        </Link>
-        <small>Cash on Delivery in selected areas.</small>
-      </div>
       <div className="shopping-motion-stage">
-        <svg viewBox="0 0 520 330" aria-hidden="true" className="shopping-motion-art">
+        <svg viewBox="70 22 390 290" aria-hidden="true" className="shopping-motion-art">
           <circle cx="279" cy="157" r="128" fill="#edf3e1" />
           <circle cx="408" cy="68" r="13" fill="#f9d798" />
           <circle cx="113" cy="206" r="8" fill="#cfdfb5" />
+          <ellipse cx="267" cy="287" rx="104" ry="9" fill="#235b3820" />
+          <g className="cart-sparkles" fill="#e6aa51">
+            <path d="m123 81 4 10 10 4-10 4-4 10-4-10-10-4 10-4Z" />
+            <path d="m402 184 3 8 8 3-8 3-3 8-3-8-8-3 8-3Z" />
+          </g>
           <path
             className="cart-road"
             d="M50 282H478"
@@ -42,56 +30,24 @@ export default function ShoppingAnimation() {
           />
           <g className="rolling-cart">
             <g className="cart-drop bag-blue">
-              <path d="M195 171h49l6 67h-59Z" fill="#4e9bab" />
-              <path
-                d="M207 177v-12a12 12 0 0 1 24 0v12"
-                fill="none"
-                stroke="#28747f"
-                strokeWidth="4"
-              />
-              <path d="M230 181v50" stroke="#79b9c3" strokeWidth="3" />
+              <path d="m192 160 14-18h25l14 18v78h-53Z" fill="#fffef4" stroke="#c6d9c6" strokeWidth="2" />
+              <path d="m192 160 14-18 13 18Z" fill="#8abfa8" />
+              <path d="M192 177h53v41h-53Z" fill="#80b8a1" />
+              <path d="M210 194c10-14 20-6 12 4-5 7-13 5-12-4Z" fill="#f7fbe9" />
             </g>
             <g className="cart-drop bag-yellow">
-              <path d="M250 157h49l5 81h-57Z" fill="#eac54e" />
-              <path
-                d="M262 162v-13a12 12 0 0 1 24 0v13"
-                fill="none"
-                stroke="#a68f32"
-                strokeWidth="4"
-              />
+              <path d="M250 235v-99c0-33 49-33 49 0v99Z" fill="#e6ad65" />
+              <path d="m265 140 18-10m-18 32 18-10m-18 32 18-10" stroke="#fff1c7" strokeWidth="7" strokeLinecap="round" />
             </g>
             <g className="cart-drop bag-orange">
-              <path d="M307 141h44l8 95h-58Z" fill="#ed7847" />
-              <path
-                d="M317 148v-15a12 12 0 0 1 24 0v15"
-                fill="none"
-                stroke="#b44b31"
-                strokeWidth="4"
-              />
-              <path d="M341 155v70" stroke="#f9a074" strokeWidth="3" />
+              <path d="M310 161c-35-34-13-70 10-35 2-48 39-49 31 1 36-28 57 2 20 36l-16 72h-40Z" fill="#6b9d58" />
+              <path d="m334 142 3 87m-1-61-17-23m18 45 22-32" fill="none" stroke="#c3d9a0" strokeWidth="4" strokeLinecap="round" />
+              <circle cx="309" cy="213" r="21" fill="#e87749" />
+              <path d="m309 192-4-7m4 7 9-4" stroke="#3d784c" strokeWidth="4" strokeLinecap="round" />
             </g>
             <g className="cart-fresh-tag">
-              <path
-                d="M278 73l29-19 70 20-24 78-72-22Z"
-                fill="#ffd475"
-                stroke="#e6b44c"
-                strokeWidth="2"
-              />
-              <circle cx="295" cy="77" r="5" fill="#fff8df" />
-              <path d="M295 77c-46-43-56-10-19 6" fill="none" stroke="#bc944d" strokeWidth="3" />
-              <text
-                x="331"
-                y="99"
-                textAnchor="middle"
-                fill="#526032"
-                fontSize="17"
-                fontWeight="800"
-              >
-                FRESH
-              </text>
-              <text x="328" y="120" textAnchor="middle" fill="#526032" fontSize="13">
-                picks
-              </text>
+              <circle cx="385" cy="99" r="23" fill="#fffdf2" stroke="#dce7ce" strokeWidth="2" />
+              <path d="m374 100 8 8 15-18" fill="none" stroke="#4b8a59" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
             </g>
             <g
               fill="none"
@@ -120,10 +76,16 @@ export default function ShoppingAnimation() {
           type="button"
           className="shopping-motion-control"
           aria-pressed={paused}
+          aria-label={paused ? 'Play cart animation' : 'Pause cart animation'}
           onClick={() => setPaused(!paused)}
         >
-          {paused ? 'Play cart animation' : 'Pause cart animation'}
+          <span aria-hidden="true">{paused ? '▶' : 'Ⅱ'}</span>
         </button>
+      </div>
+      <div className="shopping-motion-actions">
+        <Link to="/products" className="button">
+          <Icon name="cart" size={18} /> Fill your basket <Icon name="arrow" size={17} />
+        </Link>
       </div>
     </section>
   );
