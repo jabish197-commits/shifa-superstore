@@ -6,6 +6,7 @@
   border: 1px solid #dfe8d7;
   box-shadow: 0 16px 40px #16422a14;
 }
+.brand-hero-mobile-title { display: none; }
 .brand-hero-scene {
   position: relative;
   overflow: hidden;
@@ -396,4 +397,27 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .brand-hero *, .brand-hero *::before, .brand-hero *::after { animation: none !important; transition: none !important; }
+}
+
+/* Keep the first mobile campaign to a compact grocery card, not a full screen. */
+@media (max-width: 760px) {
+  .brand-hero { margin-top: 12px; border-radius: 20px; box-shadow: 0 7px 22px #16422a0b; }
+  .brand-hero-scene { position: relative; display: block; height: 224px; min-height: 0; background: #f3f5e7; }
+  .brand-hero-art { position: absolute; inset: 0 0 0 auto; width: 57%; height: 100%; object-position: 84% center; animation: none; }
+  .brand-hero-shade { inset: 0; height: auto; z-index: 1; background: linear-gradient(90deg, #f3f5e7 0%, #f3f5e7 39%, #f3f5e7dd 49%, #f3f5e725 67%, transparent 80%); }
+  .brand-hero-copy { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; width: 68%; height: 100%; padding: 19px 18px; background: transparent; }
+  .brand-hero-copy > * { animation: none; }
+  .brand-hero-desktop-title { display: none; }
+  .brand-hero-mobile-title { display: inline; }
+  .brand-hero-eyebrow { padding: 0; border: 0; background: transparent; border-radius: 0; gap: 7px; font-size: 7px; letter-spacing: .9px; }
+  .brand-hero-eyebrow i { width: 5px; height: 5px; animation: none; box-shadow: none; }
+  .brand-hero-copy h1 { margin: 15px 0 17px; font-size: clamp(25px, 6.8vw, 32px); line-height: 1.13; letter-spacing: -.9px; }
+  .brand-hero-copy h1 em { color: #267449; }
+  .brand-hero-copy > p, .brand-hero-browse, .brand-hero-trust,
+  .brand-hero-photo-note, .brand-hero-light, .brand-hero-footer { display: none; }
+  .brand-hero-actions { gap: 0; }
+  .brand-hero .brand-hero-shop { min-height: 44px; padding: 10px 16px; gap: 12px; border: 0; border-radius: 12px; background: #155d3d; color: white; box-shadow: none; font-size: 12px; }
+  .brand-hero .brand-hero-shop:hover { background: #104b31 !important; transform: none; box-shadow: none; }
+  .brand-hero-shop::after { display: none; }
+  .brand-hero-shop svg { width: 16px; height: 16px; }
 }

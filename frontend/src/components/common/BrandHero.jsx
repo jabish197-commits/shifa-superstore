@@ -25,9 +25,12 @@ export default function BrandHero() {
             <i /> FRESH • QUALITY • EVERYDAY
           </span>
           <h1 id="brand-hero-title">
+            <span className="brand-hero-desktop-title">
             Everything you need.
             <br />
             <em>Under one roof.</em>
+            </span>
+            <span className="brand-hero-mobile-title">Your daily<br /><em>fresh picks.</em></span>
           </h1>
           <p>
             Fresh choices. Familiar favourites.
