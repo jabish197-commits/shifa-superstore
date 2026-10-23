@@ -2779,3 +2779,15 @@ html {
   .category-rail-group { padding-right: 0; }
   .category-rail-group[data-duplicate="true"], .category-rail-caption button { display: none; }
 }
+
+/* iPhone Safari zooms focused text fields when their font is smaller than 16px. */
+@media (max-width: 760px) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]):not([type="hidden"]),
+  :root select,
+  :root textarea,
+  .search-bar input,
+  .floating-header .search-bar input {
+    font-size: 16px;
+    min-width: 0;
+  }
+}
