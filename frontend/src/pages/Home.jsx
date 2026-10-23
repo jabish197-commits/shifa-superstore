@@ -2,6 +2,7 @@ import DeliveryAnimation from '../components/common/DeliveryAnimation';
 import BrandHero from '../components/common/BrandHero';
 import BannerCarousel from '../components/common/BannerCarousel';
 import ShoppingAnimation from '../components/common/ShoppingAnimation';
+import MobileCategoryRail from '../components/common/MobileCategoryRail';
 import { Link } from 'react-router-dom';
 import useLoad from '../hooks/useLoad';
 import ProductCard from '../components/products/ProductCard';
@@ -52,7 +53,9 @@ export default function Home() {
         ) : categories.loading ? (
           <Loader />
         ) : categories.data?.length ? (
-          <div className="category-strip">
+          <>
+          <MobileCategoryRail categories={categories.data} />
+          <div className="category-strip home-category-desktop">
             {categories.data.slice(0, 7).map((c, i) => (
               <Link
                 className={`category-tile tone-${i % 4}`}
@@ -75,6 +78,7 @@ export default function Home() {
               </Link>
             ))}
           </div>
+          </>
         ) : (
           <p className="muted">
             Our categories are being prepared. Browse all available products below.
