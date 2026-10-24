@@ -52,7 +52,8 @@ export default function App() {
         Skip to content
       </a>
       <Header />
-      <div id="main-content">
+      <div id="main-content" key={location.pathname}
+        className={location.state?.mobileSwipe ? `mobile-page-${location.state.mobileSwipe}` : undefined}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />

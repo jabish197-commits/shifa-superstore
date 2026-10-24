@@ -18,6 +18,7 @@ export default function Footer() {
           <h3>Explore the store</h3>
           <Link to="/products">All products</Link>
           <Link to="/categories">Categories</Link>
+          <Link to="/brands">Brands</Link>
           <Link to="/offers">Current offers</Link>
         </div>
         <div>

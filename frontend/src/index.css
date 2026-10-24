@@ -688,6 +688,7 @@ select[multiple] {
 }
 .mobile-category-rail { display: none; }
 .mobile-bottom-nav { display: none; }
+.category-sheet:not([open]) { display: none; }
 .category-strip {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
@@ -2805,24 +2806,79 @@ html {
   .mobile-bottom-nav {
     position: fixed;
     z-index: 90;
-    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
-    left: 12px;
-    right: 12px;
+    bottom: 0;
+    left: 0;
+    right: 0;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 3px;
-    padding: 7px 5px;
+    padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 0px));
     border: 1px solid #dde7d8;
-    border-radius: 24px;
+    border-radius: 20px 20px 0 0;
     background: #fffffff5;
     backdrop-filter: blur(16px);
     box-shadow: 0 5px 30px #143f2b25;
   }
   .mobile-tab { display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 50px; padding: 3px; color: #72806f; font-size: 10px; font-weight: 600; text-decoration: none; }
+  button.mobile-tab { border: 0; background: transparent; font-family: inherit; cursor: pointer; }
   .mobile-tab-icon { position: relative; display: grid; place-items: center; width: 48px; height: 28px; border-radius: 14px; transition: background .18s ease; }
   .mobile-tab.active { color: #175b3c; }
   .mobile-tab.active .mobile-tab-icon { background: #e6f1df; }
   .mobile-tab-count { position: absolute; right: 3px; top: -4px; display: grid; place-items: center; min-width: 16px; height: 16px; padding: 0 3px; border-radius: 9px; background: #ee8c42; color: #173e27; font-size: 9px; }
   .mobile-tab:focus-visible { outline: 2px solid #175b3c; outline-offset: -2px; border-radius: 12px; }
   body:has(input:focus, textarea:focus) .mobile-bottom-nav { display: none; }
+  .floating-header .main-nav { display: none; }
+  .floating-header .header-actions { display: none; }
+  .floating-header .header-actions:has(.logout) { display: flex; }
+  .floating-header .header-actions .account-link,
+  .floating-header .header-actions .cart-link { display: none; }
+  .floating-header .logout { min-height: 44px; font-size: 11px; }
+  .floating-header .search-bar { order: 2; }
+  html { scroll-padding-top: 135px; }
+  body:has(.category-sheet[open]) { overflow: hidden; }
+  .category-sheet[open] {
+    position: fixed;
+    inset: auto 0 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: none;
+    max-height: 80dvh;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    border: 1px solid #ffffffb0;
+    border-bottom: 0;
+    border-radius: 30px 30px 0 0;
+    color: #174d35;
+    background: linear-gradient(140deg, #f6fbf3ed, #fffaf1ed);
+    backdrop-filter: blur(24px);
+    box-shadow: 0 -15px 60px #163c2526;
+    animation: category-sheet-rise .28s cubic-bezier(.2,.8,.2,1) both;
+  }
+  .category-sheet::backdrop { background: #16362550; backdrop-filter: blur(3px); }
+  .category-sheet-heading { padding: 10px 20px 12px; touch-action: pan-x; }
+  .category-sheet-handle { display: block; width: 36px; height: 4px; margin: 0 auto 14px; border-radius: 4px; background: #aec1ac; }
+  .category-sheet-title-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .category-sheet-title-row p { margin: 0 0 5px; font-size: 8px; letter-spacing: 1.5px; color: #6c866c; }
+  .category-sheet-title-row h2 { margin: 0; font-size: 23px; letter-spacing: -.7px; }
+  .category-sheet-close { display: grid; place-items: center; width: 44px; height: 44px; flex-shrink: 0; background: #ffffffa0; border: 1px solid #e1e9dc; border-radius: 50%; color: #3f6b49; font-size: 25px; }
+  .category-sheet-content { min-height: 0; overflow-y: auto; overscroll-behavior-y: contain; scrollbar-width: thin; scrollbar-color: #bdcdb5 transparent; padding: 10px 16px calc(22px + env(safe-area-inset-bottom, 0px)); }
+  .category-bubble-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px 8px; }
+  .category-bubble { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; text-decoration: none; color: #25533b; }
+  .category-bubble > span { display: grid; place-items: center; width: 66px; height: 66px; border: 1px solid #ffffff; border-radius: 50%; background: radial-gradient(circle at 35% 25%, #ffffffd9, #e3efdacc); box-shadow: inset 0 2px 4px #ffffffdd, 0 5px 12px #315c3010; transition: transform .18s ease; }
+  .tone-bubble-1 > span { background: radial-gradient(circle at 35% 25%, #fffdf8, #f9e7d2cc); }
+  .tone-bubble-2 > span { background: radial-gradient(circle at 35% 25%, #ffffffd9, #e4eaf7cc); }
+  .tone-bubble-3 > span { background: radial-gradient(circle at 35% 25%, #ffffffd9, #f5e2e2cc); }
+  .category-bubble img { width: 51px; height: 51px; border-radius: 50%; object-fit: contain; mix-blend-mode: multiply; }
+  .category-bubble strong { font-size: 10px; font-weight: 600; line-height: 1.35; }
+  .category-bubble:active > span { transform: scale(.94); }
+  .category-bubble:focus-visible { outline: 2px solid #246342; border-radius: 12px; outline-offset: 3px; }
+  .category-sheet-all { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 22px; min-height: 44px; border-radius: 22px; background: #ffffffb0; border: 1px solid #d9e5d2; color: #23583a; font-size: 12px; font-weight: 600; }
+  .mobile-page-next { animation: mobile-tab-next .18s ease-out both; }
+  .mobile-page-previous { animation: mobile-tab-previous .18s ease-out both; }
 }
+@media (max-width: 360px) { .category-bubble-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@keyframes category-sheet-rise { from { opacity: .4; transform: translateY(100%); } to { opacity: 1; transform: translateY(0); } }
+@keyframes mobile-tab-next { from { opacity: .6; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes mobile-tab-previous { from { opacity: .6; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) { .mobile-page-next, .mobile-page-previous, .category-sheet[open] { animation: none; } }
