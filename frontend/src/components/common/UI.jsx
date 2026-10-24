@@ -9,6 +9,8 @@ export const date = (value) =>
   new Date(value).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' });
 export function Icon({ name, size = 20, ...props }) {
   const paths = {
+    home: <><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z" /></>,
+    grid: <><rect x="3" y="3" width="7" height="7" rx="2" /><rect x="14" y="3" width="7" height="7" rx="2" /><rect x="3" y="14" width="7" height="7" rx="2" /><rect x="14" y="14" width="7" height="7" rx="2" /></>,
     cart: (
       <>
         <path d="M3 3h2l3 12h10l3-9H6" />

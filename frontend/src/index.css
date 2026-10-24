@@ -687,6 +687,7 @@ select[multiple] {
   margin-top: 2px;
 }
 .mobile-category-rail { display: none; }
+.mobile-bottom-nav { display: none; }
 .category-strip {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
@@ -2790,4 +2791,38 @@ html {
     font-size: 16px;
     min-width: 0;
   }
+}
+
+@media (max-width: 760px) {
+  body { padding-bottom: calc(90px + env(safe-area-inset-bottom, 0px)); }
+  .home-category-section, .home-delivery-section { margin-top: 28px; margin-bottom: 0; padding-top: 0; padding-bottom: 0; }
+  .home-category-section .section-heading { margin-bottom: 18px; }
+  #main-content:has(.home-delivery-section) + footer { margin-top: 32px; }
+  .home-delivery-section .delivery-feature { padding: 18px 16px 14px; gap: 8px; }
+  .home-delivery-section .delivery-feature h2 { font-size: 23px; margin: 10px 0; line-height: 1.15; }
+  .home-delivery-section .delivery-feature p { font-size: 12px; margin: 0 0 12px; line-height: 1.5; }
+  .home-delivery-section .delivery-animation svg { height: 128px; }
+  .mobile-bottom-nav {
+    position: fixed;
+    z-index: 90;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    left: 12px;
+    right: 12px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 3px;
+    padding: 7px 5px;
+    border: 1px solid #dde7d8;
+    border-radius: 24px;
+    background: #fffffff5;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 5px 30px #143f2b25;
+  }
+  .mobile-tab { display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 50px; padding: 3px; color: #72806f; font-size: 10px; font-weight: 600; text-decoration: none; }
+  .mobile-tab-icon { position: relative; display: grid; place-items: center; width: 48px; height: 28px; border-radius: 14px; transition: background .18s ease; }
+  .mobile-tab.active { color: #175b3c; }
+  .mobile-tab.active .mobile-tab-icon { background: #e6f1df; }
+  .mobile-tab-count { position: absolute; right: 3px; top: -4px; display: grid; place-items: center; min-width: 16px; height: 16px; padding: 0 3px; border-radius: 9px; background: #ee8c42; color: #173e27; font-size: 9px; }
+  .mobile-tab:focus-visible { outline: 2px solid #175b3c; outline-offset: -2px; border-radius: 12px; }
+  body:has(input:focus, textarea:focus) .mobile-bottom-nav { display: none; }
 }

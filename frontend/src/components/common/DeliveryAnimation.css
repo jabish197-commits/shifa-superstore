@@ -52,3 +52,17 @@
 .delivery-feature:has(.delivery-animation-paused)::before, .delivery-feature:has(.delivery-animation-paused)::after { animation-play-state: paused; }
 @keyframes delivery-glow { from { transform: translate(0,0) scale(1); } to { transform: translate(-35px,25px) scale(1.18); } }
 @media(prefers-reduced-motion:reduce) { .delivery-feature::before, .delivery-feature::after { animation: none !important; } }
+
+@media (max-width: 760px) {
+  .delivery-callout.delivery-feature { padding: 20px 18px 16px; gap: 12px; border-radius: 22px; box-shadow: 0 8px 24px #23543b0a; }
+  .delivery-feature > div:first-child { flex: none; }
+  .delivery-feature .eyebrow { font-size: 7px; letter-spacing: 1.3px; }
+  .delivery-feature h2 { font-size: 25px; line-height: 1.14; letter-spacing: -.7px; margin: 12px 0 10px; }
+  .delivery-feature p { font-size: 12px; line-height: 1.5; margin-bottom: 14px; }
+  .delivery-feature .button { min-height: 44px; border-radius: 12px; padding: 10px 16px; font-size: 12px; box-shadow: none; }
+  .delivery-feature .delivery-steps { display: none; }
+  .delivery-feature .delivery-animation { position: relative; flex: none; width: 100%; max-width: 360px; margin: 0 auto; padding: 0; background: transparent; border: 0; border-radius: 0; box-shadow: none; }
+  .delivery-feature .delivery-animation svg { height: 150px; }
+  .delivery-feature .delivery-animation-caption { display: none; }
+  .delivery-feature .delivery-animation-toggle { position: absolute; right: 0; bottom: 0; min-height: 36px; margin: 0; font-size: 8px; padding: 5px 9px; background: #fffdf2d9; }
+}

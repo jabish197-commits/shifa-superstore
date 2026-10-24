@@ -446,3 +446,32 @@
   }
 }
 .promo-motion-paused .promo-image img{animation-play-state:paused!important}
+
+@media (max-width: 760px) {
+  .promo-carousel { margin-top: 24px; border-radius: 20px; }
+  .promo-slide, .promo-slide.promo-photo {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    align-items: center;
+    align-content: center;
+    min-height: 0;
+    height: 244px;
+    gap: 10px;
+    padding: 18px 18px 54px;
+  }
+  .promo-copy, .promo-photo .promo-copy { padding: 0; max-width: none; }
+  .promo-photo .promo-copy { grid-column: 1 / -1; max-width: 73%; }
+  .promo-copy h2, .promo-photo .promo-copy h2 { font-size: 23px; line-height: 1.13; letter-spacing: -.7px; margin: 10px 0 14px; }
+  .promo-copy p { display: none; }
+  .promo-kicker { font-size: 7px; letter-spacing: 1px; }
+  .promo-cta, .promo-photo .promo-cta { min-height: 44px; padding: 10px 14px; border-radius: 12px; font-size: 11px; gap: 8px; }
+  .promo-cta svg { width: 16px; height: 16px; }
+  .promo-photo .promo-image { position: absolute; inset: 0; height: 100%; z-index: -2; }
+  .promo-photo .promo-image img { height: 100%; object-position: 76% center; }
+  .promo-photo:after { display: block; background: linear-gradient(90deg, #082f22f2, #0b3429d9 43%, #10382525 85%); }
+  .promo-uploaded .promo-image img { height: 130px; object-fit: contain; }
+  .promo-arrow { display: none; }
+  .promo-controls { bottom: 3px; gap: 5px; padding: 0 5px; }
+  .promo-dots button { width: 30px; height: 44px; }
+  .promo-pause { min-height: 44px; font-size: 9px; padding: 7px; }
+}

@@ -17,16 +17,8 @@ export default function Auth({ register = false }) {
     setError('');
     try {
       if (register) await authService.register(values);
-      const user = await login({ username: values.username, password: values.password });
-      const from = location.state?.from;
-      navigate(
-        user.role === 'admin'
-          ? '/admin-dashboard'
-          : from?.startsWith('/') && !from.startsWith('//')
-            ? from
-            : '/products',
-        { replace: true },
-      );
+      await login({ username: values.username, password: values.password });
+      navigate('/', { replace: true });
     } catch (err) {
       setError(errorMessage(err));
     } finally {

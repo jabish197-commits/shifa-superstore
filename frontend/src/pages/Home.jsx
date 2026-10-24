@@ -5,10 +5,8 @@ import ShoppingAnimation from '../components/common/ShoppingAnimation';
 import MobileCategoryRail from '../components/common/MobileCategoryRail';
 import { Link } from 'react-router-dom';
 import useLoad from '../hooks/useLoad';
-import ProductCard from '../components/products/ProductCard';
-import { Icon, Loader, ErrorBox, Empty } from '../components/common/UI';
+import { Icon, Loader, ErrorBox } from '../components/common/UI';
 export default function Home() {
-  const products = useLoad('products/');
   const categories = useLoad('categories/');
   const banners = useLoad('banners/');
   return (
@@ -38,7 +36,7 @@ export default function Home() {
         </div>
       </div>
       <ShoppingAnimation />
-      <section className="container section">
+      <section className="container section home-category-section">
         <div className="section-heading">
           <div>
             <p className="eyebrow">FIND YOUR EVERYDAY</p>
@@ -86,33 +84,7 @@ export default function Home() {
         )}
       </section>
       <BannerCarousel banners={banners.data || []} />
-      <section className="container section">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">THE EVERYDAY EDIT</p>
-            <h2>Good things for your basket</h2>
-          </div>
-          <Link to="/products" className="text-link">
-            Shop all products <Icon name="arrow" size={17} />
-          </Link>
-        </div>
-        {products.error ? (
-          <ErrorBox message={products.error} retry={products.reload} />
-        ) : products.loading ? (
-          <Loader />
-        ) : products.data?.results.length ? (
-          <div className="product-grid">
-            {products.data.results.slice(0, 8).map((p) => (
-              <ProductCard key={p.id} product={p} />
-            ))}
-          </div>
-        ) : (
-          <Empty title="Fresh choices are on their way">
-            Our team is preparing the product selection. Please check back soon.
-          </Empty>
-        )}
-      </section>
-      <section className="container section">
+      <section className="container section home-delivery-section">
         <div className="delivery-callout delivery-feature">
           <div>
             <span className="eyebrow">FROM OUR STORE TO YOUR DOOR</span>

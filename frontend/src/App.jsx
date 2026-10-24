@@ -2,6 +2,7 @@ import { Component, useEffect } from 'react';
 import { Routes, Route, useLocation, Link } from 'react-router-dom';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
+import MobileBottomNav from './components/common/MobileBottomNav';
 import ProtectedRoute from './components/common/ProtectedRoute';
 import { Empty } from './components/common/UI';
 import Home from './pages/Home';
@@ -90,6 +91,7 @@ export default function App() {
         </Routes>
       </div>
       <Footer />
+      <MobileBottomNav />
     </ErrorBoundary>
   );
 }
