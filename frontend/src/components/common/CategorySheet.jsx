@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import useLoad from '../../hooks/useLoad';
 import { ErrorBox, Icon, Loader } from './UI';
 import { sheetSwipeDown } from './mobileGestures';
+import dialogPolyfill from 'dialog-polyfill';
+import 'dialog-polyfill/dist/dialog-polyfill.css';
 
 export default function CategorySheet({ open, onClose }) {
   const dialog = useRef(null);
   const drag = useRef(null);
   const categories = useLoad(open ? 'categories/' : null);
   useEffect(() => {
+    if (typeof dialog.current.showModal !== 'function') dialogPolyfill.registerDialog(dialog.current);
     if (open && !dialog.current.open) dialog.current.showModal();
     else if (!open && dialog.current.open) dialog.current.close();
   }, [open]);

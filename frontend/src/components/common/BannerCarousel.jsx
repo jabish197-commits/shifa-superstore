@@ -66,10 +66,12 @@ export default function BannerCarousel({ banners = [] }) {
     const update = () => setReduced(media.matches);
     const visibility = () => setHidden(document.hidden);
     update();
-    media.addEventListener('change', update);
+    if (media.addEventListener) media.addEventListener('change', update);
+    else media.addListener(update);
     document.addEventListener('visibilitychange', visibility);
     return () => {
-      media.removeEventListener('change', update);
+      if (media.removeEventListener) media.removeEventListener('change', update);
+      else media.removeListener(update);
       document.removeEventListener('visibilitychange', visibility);
     };
   }, []);
