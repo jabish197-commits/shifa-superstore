@@ -1,11 +1,11 @@
 # Shifa Superstore: Android and iOS
 
-Status: native projects generated with Capacitor 8. Web production build verified. No APK, signed AAB or signed IPA has been produced. Android SDK is missing on the preparation computer; iOS requires macOS/Xcode. Launcher icons and launch screens are still Capacitor defaults; replace them with production Shifa artwork before distribution.
+Status: Android and iOS projects are synchronized with the deployed HTTPS Shifa API. Shifa launcher icons and launch screens were generated from assets/logo.png. Native HTTP is enabled for API requests. The iOS project requires iOS 15 or newer and macOS/Xcode for signing; iOS 12 devices can use the compatible website. Android debug APK was built and its APK Signature Scheme v2 signature, package ID, Android 7 minimum version and bundled HTTPS API configuration were verified. Real-device login/cart/checkout tests are still pending. No signed App Store or Play Store release has been produced.
 
 ## Connect your server
 1. Deploy the existing Django backend with HTTPS using the project's deployment instructions. Keep the SQLite database and media backed up. Do not use localhost as a phone API address.
 2. Copy `.env.mobile.example` to `.env.mobile.local` inside frontend. Replace BOTH URLs with your deployed addresses, e.g. the API URL must end in `/api/`.
-3. Set backend `DJANGO_ALLOWED_HOSTS` to your server hostname, and add `https://localhost,capacitor://localhost` to `DJANGO_CORS_ALLOWED_ORIGINS` alongside your website origin. Android uses https://localhost; iOS uses capacitor://localhost. Do not use a wildcard. Configure the HTTPS reverse proxy so product/category image URLs are also HTTPS.
+3. Native API requests use CapacitorHttp (enabled in capacitor.config.json); HTTPS certificate checks and API token authentication still apply. Browser requests continue to use the website CORS policy. Product/category image URLs must also use HTTPS.
 4. Run `npm ci`, then `npm run mobile:sync`. This validates the address, builds the mobile web bundle and synchronizes both native projects. The address validation is syntactic; test actual server reachability and CORS on devices.
 
 ## Android
@@ -18,7 +18,7 @@ On a Mac install Xcode and its command-line tools. Copy the frontend source and 
 Select your Apple development team under Signing & Capabilities. Confirm bundle ID `com.shifasuperstore.app` is appropriate and available for your account before first publication. Run on a simulator/device, then Product > Archive and distribute through TestFlight/App Store Connect. Apple distribution credentials and device signing are not included.
 
 ## Before release
-- Replace launcher icons and splash screens on both platforms; confirm app name/version and final bundle ID.
+- Shifa icons and splash screens are included. Confirm the app name, version and bundle ID before store submission.
 - Test login/logout, category and product images, cart, stock validation, delivery-area checks, COD checkout and order history on real devices.
 - Test Android back button, iPhone safe areas, keyboard, offline errors and photo selection for admin uploads if admin use is required.
 - The app preserves the website's session-based login; persistent native secure login is not implemented.
@@ -32,3 +32,6 @@ scripts/build-mobile.mjs: checks HTTPS configuration before mobile build.
 src/mobile.js: Android back button and native safe-area class.
 
 Documentation: https://capacitorjs.com/docs/getting-started/environment-setup
+
+
+
