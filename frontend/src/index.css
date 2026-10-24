@@ -2843,6 +2843,7 @@ html {
     padding: 0;
     width: 100%;
     max-width: none;
+    max-height: 80vh;
     max-height: 80dvh;
     display: grid;
     grid-template-rows: auto minmax(0, 1fr);
