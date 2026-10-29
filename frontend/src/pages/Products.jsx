@@ -1,10 +1,12 @@
+import { useAuth } from '../context/AuthContext';
 import { useSearchParams } from 'react-router-dom';
 import useLoad from '../hooks/useLoad';
 import ProductCard from '../components/products/ProductCard';
 import { PageHeading, Loader, ErrorBox, Empty, Pagination } from '../components/common/UI';
 export default function Products() {
   const [params, setParams] = useSearchParams();
-  const products = useLoad(`products/?${params.toString()}`);
+  const { user } = useAuth();
+  const products = useLoad(`products/?${params.toString()}`, { cacheKey: `products:${user?.id || 'guest'}:${user?.role || 'guest'}:${params.toString()}` });
   const update = (key, value) => {
     const next = new URLSearchParams(params);
     value ? next.set(key, value) : next.delete(key);

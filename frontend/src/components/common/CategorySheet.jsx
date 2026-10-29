@@ -1,3 +1,4 @@
+import { useAuth } from '../../context/AuthContext';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import useLoad from '../../hooks/useLoad';
@@ -9,7 +10,8 @@ import 'dialog-polyfill/dist/dialog-polyfill.css';
 export default function CategorySheet({ open, onClose }) {
   const dialog = useRef(null);
   const drag = useRef(null);
-  const categories = useLoad(open ? 'categories/' : null);
+  const { user } = useAuth();
+  const categories = useLoad(open ? 'categories/' : null, { cacheKey: `categories:${user?.id || 'guest'}:${user?.role || 'guest'}` });
   useEffect(() => {
     if (typeof dialog.current.showModal !== 'function') dialogPolyfill.registerDialog(dialog.current);
     if (open && !dialog.current.open) dialog.current.showModal();

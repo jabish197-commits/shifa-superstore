@@ -21,7 +21,7 @@ Select your Apple development team under Signing & Capabilities. Confirm bundle 
 - Shifa icons and splash screens are included. Confirm the app name, version and bundle ID before store submission.
 - Test login/logout, category and product images, cart, stock validation, delivery-area checks, COD checkout and order history on real devices.
 - Test Android back button, iPhone safe areas, keyboard, offline errors and photo selection for admin uploads if admin use is required.
-- The app preserves the website's session-based login; persistent native secure login is not implemented.
+- Version 1.0.1 persists login tokens in local storage across app restarts (passwords are not stored). Network failures retain the login; invalid or expired refresh tokens require sign-in. The backend rotates refresh tokens with a 30-day lifetime. Native encrypted keychain storage is not implemented.
 - Prepare privacy policy, store screenshots and app-store disclosures. Store acceptance is subject to review.
 
 ## Files

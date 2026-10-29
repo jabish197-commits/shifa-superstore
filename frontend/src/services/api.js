@@ -1,21 +1,32 @@
 import axios from 'axios';
 
-const baseURL = import.meta.env.VITE_API_URL || '/api/';
+const baseURL = import.meta.env?.VITE_API_URL || '/api/';
 export const tokenStore = {
   get: () => {
     try {
-      return JSON.parse(sessionStorage.getItem('shifa-auth') || 'null');
+      const saved = localStorage.getItem('shifa-auth');
+      if (saved) return JSON.parse(saved);
+      const previous = sessionStorage.getItem('shifa-auth');
+      if (previous) {
+        localStorage.setItem('shifa-auth', previous);
+        sessionStorage.removeItem('shifa-auth');
+      }
+      return JSON.parse(previous || 'null');
     } catch {
       return null;
     }
   },
-  set: (tokens) => sessionStorage.setItem('shifa-auth', JSON.stringify(tokens)),
+  set: (tokens) => {
+    localStorage.setItem('shifa-auth', JSON.stringify(tokens));
+    sessionStorage.removeItem('shifa-auth');
+  },
   clear: () => {
+    localStorage.removeItem('shifa-auth');
     sessionStorage.removeItem('shifa-auth');
     window.dispatchEvent(new Event('shifa-signout'));
   },
 };
-const api = axios.create({ baseURL, timeout: 20000 });
+const api = axios.create({ baseURL, timeout: 90000 });
 api.interceptors.request.use((config) => {
   const token = tokenStore.get()?.access;
   if (token) config.headers.Authorization = `Bearer ${token}`;
@@ -26,6 +37,10 @@ api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const config = error.config;
+    if (error.response?.status === 401 && config?._retried) {
+      if (config.headers.Authorization === `Bearer ${tokenStore.get()?.access}`) tokenStore.clear();
+      throw error;
+    }
     if (
       error.response?.status !== 401 ||
       !config ||
@@ -46,10 +61,11 @@ api.interceptors.response.use(
           .post(
             `${baseURL.replace(/\/$/, '')}/accounts/refresh/`,
             { refresh: saved.refresh },
-            { timeout: 20000 },
+            { timeout: 90000 },
           )
           .then(({ data }) => {
             const tokens = { access: data.access, refresh: data.refresh || saved.refresh };
+            if (tokenStore.get()?.refresh !== saved.refresh) throw new Error('Session changed');
             tokenStore.set(tokens);
             return tokens;
           })
@@ -60,7 +76,7 @@ api.interceptors.response.use(
       config.headers.Authorization = `Bearer ${tokens.access}`;
       return api(config);
     } catch (refreshError) {
-      tokenStore.clear();
+      if (refreshError.response?.status === 401 && tokenStore.get()?.refresh === saved.refresh) tokenStore.clear();
       throw refreshError;
     }
   },
